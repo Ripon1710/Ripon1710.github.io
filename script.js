@@ -1,7 +1,7 @@
 /* =========================================
-   Ripon Portfolio — v1.1
+   Ripon Portfolio — shared by index.html and resume.html
    Language toggle (class-based) + mobile menu + scroll reveal
-   All text lives in index.html; this file only switches visibility.
+   All text lives in the HTML; this file only switches visibility.
    ========================================= */
 
 const STORAGE_KEY = "ripon-lang";
@@ -27,25 +27,29 @@ document.addEventListener("DOMContentLoaded", () => {
   // Sync the toggle UI with that state (and remember a ?lang= choice).
   setLanguage(root.classList.contains("lang-en") ? "en" : "ja");
 
-  document.getElementById("langToggle").addEventListener("click", () => {
-    setLanguage(root.classList.contains("lang-en") ? "ja" : "en");
-  });
+  const langToggle = document.getElementById("langToggle");
+  if (langToggle) {
+    langToggle.addEventListener("click", () => {
+      setLanguage(root.classList.contains("lang-en") ? "ja" : "en");
+    });
+  }
 
-  // ----- Mobile menu -----
+  // ----- Mobile menu (only on pages that have one) -----
   const menuBtn = document.getElementById("menuToggle");
   const navLinks = document.getElementById("navLinks");
 
-  function setMenu(open) {
-    navLinks.classList.toggle("open", open);
-    menuBtn.setAttribute("aria-expanded", String(open));
+  if (menuBtn && navLinks) {
+    const setMenu = (open) => {
+      navLinks.classList.toggle("open", open);
+      menuBtn.setAttribute("aria-expanded", String(open));
+    };
+    menuBtn.addEventListener("click", () => {
+      setMenu(menuBtn.getAttribute("aria-expanded") !== "true");
+    });
+    navLinks.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+    window.matchMedia("(min-width: 960px)").addEventListener("change", (e) => { if (e.matches) setMenu(false); });
   }
-
-  menuBtn.addEventListener("click", () => {
-    setMenu(menuBtn.getAttribute("aria-expanded") !== "true");
-  });
-  navLinks.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
-  window.matchMedia("(min-width: 960px)").addEventListener("change", (e) => { if (e.matches) setMenu(false); });
 
   // ----- Footer year -----
   const year = document.getElementById("year");

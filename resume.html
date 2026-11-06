@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Apply language before first paint. Priority: ?lang= > localStorage > Japanese -->
+  <script>
+    (function () {
+      document.documentElement.classList.add("js");
+      var lang = null;
+      try { lang = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+      if (lang !== "en" && lang !== "ja") {
+        try { lang = localStorage.getItem("ripon-lang"); } catch (e) {}
+      }
+      if (lang === "en") {
+        document.documentElement.classList.add("lang-en");
+        document.documentElement.lang = "en";
+      }
+    })();
+  </script>
+
+  <title>Resume | Ripon — Aspiring Web Application Developer</title>
+  <meta name="description" content="Resume of Ripon — aspiring web application developer studying IT in Kobe, Japan. レジュメ（Webアプリケーション開発エンジニア志望）。">
+  <meta name="theme-color" content="#0b0b0e">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Ripon Portfolio">
+  <meta property="og:title" content="Resume | Ripon">
+  <meta property="og:description" content="Aspiring Web Application Developer. Webアプリケーション開発エンジニア志望。">
+  <meta property="og:image" content="https://ripon1710.github.io/images/og.jpg">
+  <meta property="og:url" content="https://ripon1710.github.io/resume.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ripon1710.github.io/images/og.jpg">
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="resume-page">
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="logo" aria-label="Portfolio home">R<span>.</span></a>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English">
+          <span class="lang-opt active" data-lang-opt="ja">JP</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt" data-lang-opt="en">EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="resume-wrap">
+    <div class="resume-toolbar">
+      <a href="index.html" class="resume-back"><span data-lang="ja">← ポートフォリオに戻る</span><span data-lang="en">← Back to Portfolio</span></a>
+      <button type="button" class="btn btn-ghost print-btn" onclick="window.print()">
+        <span data-lang="ja">印刷 / PDFで保存</span><span data-lang="en">Print / Save as PDF</span>
+      </button>
+    </div>
+
+    <article class="resume">
+
+      <!-- ===== Header ===== -->
+      <header class="resume-head">
+        <h1 class="resume-name">Ripon<span class="resume-kana">（リポン）</span></h1>
+        <p class="resume-role">
+          <span data-lang="ja">Webアプリケーション開発<span class="nowrap">エンジニア志望</span></span>
+          <span data-lang="en">Aspiring Web Application Developer</span>
+        </p>
+        <ul class="resume-contact">
+          <li><a href="mailto:ahammedripon48@gmail.com">ahammedripon48@gmail.com</a></li>
+          <li><a href="https://ripon1710.github.io/">ripon1710.github.io</a></li>
+          <li><a href="https://github.com/Ripon1710">github.com/Ripon1710</a></li>
+        </ul>
+      </header>
+
+      <!-- ===== Education ===== -->
+      <section class="resume-section">
+        <h2 class="resume-h"><span data-lang="ja">学歴</span><span data-lang="en">Education</span></h2>
+        <dl class="timeline">
+          <dt>2022</dt>
+          <dd>
+            <span data-lang="ja">HSC（後期中等教育修了・理系）、バングラデシュ</span>
+            <span data-lang="en">HSC (Science), Bangladesh</span>
+          </dd>
+
+          <dt><span data-lang="ja">2024年10月</span><span data-lang="en">Oct 2024</span></dt>
+          <dd>
+            <span data-lang="ja">神戸電子専門学校 日本語学科 入学</span>
+            <span data-lang="en">Kobe Institute of Computing – College of Computing (Kobe Denshi) — Japanese Language Course, enrolled</span>
+          </dd>
+
+          <dt><span data-lang="ja">2026年3月</span><span data-lang="en">Mar 2026</span></dt>
+          <dd>
+            <span data-lang="ja">同 修了</span>
+            <span data-lang="en">Japanese Language Course, completed</span>
+          </dd>
+
+          <dt><span data-lang="ja">2026年4月</span><span data-lang="en">Apr 2026</span></dt>
+          <dd>
+            <span data-lang="ja">神戸電子専門学校 ITスペシャリスト学科 入学（3年制）</span>
+            <span data-lang="en">Kobe Institute of Computing – College of Computing (Kobe Denshi) — IT Specialist Course, enrolled (3-year program)</span>
+          </dd>
+
+          <dt><span data-lang="ja">2029年3月</span><span data-lang="en">Mar 2029</span></dt>
+          <dd>
+            <span data-lang="ja">同 卒業見込み</span>
+            <span data-lang="en">IT Specialist Course, expected graduation</span>
+          </dd>
+        </dl>
+      </section>
+
+      <!-- ===== Certifications ===== -->
+      <section class="resume-section">
+        <h2 class="resume-h"><span data-lang="ja">資格</span><span data-lang="en">Certifications</span></h2>
+        <ul class="resume-list">
+          <li><span data-lang="ja">日本語能力試験 N2</span><span data-lang="en">JLPT N2 (Japanese-Language Proficiency Test)</span></li>
+          <li><span data-lang="ja">C言語プログラミング能力認定試験 3級</span><span data-lang="en">C Programming Ability Certification, Level 3</span></li>
+        </ul>
+      </section>
+
+      <!-- ===== Skills ===== -->
+      <section class="resume-section">
+        <h2 class="resume-h"><span data-lang="ja">スキル</span><span data-lang="en">Skills</span></h2>
+        <dl class="kv">
+          <dt><span data-lang="ja">プログラミング</span><span data-lang="en">Programming</span></dt>
+          <dd>C, HTML/CSS, JavaScript, Scratch</dd>
+
+          <dt><span data-lang="ja">バックエンド・クラウド</span><span data-lang="en">Backend &amp; Cloud</span></dt>
+          <dd>Firebase (Firestore, Auth, Hosting, FCM), Cloudflare Workers, PWA</dd>
+
+          <dt><span data-lang="ja">AIツール</span><span data-lang="en">AI Tools</span></dt>
+          <dd>Claude, Higgsfield AI, ElevenLabs, CapCut</dd>
+
+          <dt><span data-lang="ja">言語</span><span data-lang="en">Languages</span></dt>
+          <dd>
+            <span data-lang="ja">ベンガル語（母語）、日本語（N2）、英語（基礎）</span>
+            <span data-lang="en">Bengali (native), Japanese (N2), English (basic)</span>
+          </dd>
+        </dl>
+      </section>
+
+      <!-- ===== Projects ===== -->
+      <section class="resume-section">
+        <h2 class="resume-h"><span data-lang="ja">プロジェクト</span><span data-lang="en">Projects</span></h2>
+        <div class="resume-item">
+          <h3 class="resume-item-title">
+            <a href="index.html#projects">Club Hisab</a>
+          </h3>
+          <p>
+            <span data-lang="ja">実際のクラブ向け会費管理Webアプリ（個人開発・10名以上が利用・Security Rulesテスト102件・運用コスト0円）</span>
+            <span data-lang="en">Fund-tracking web app for a real club (solo build, 10+ active users, 102 security-rule tests, zero running cost)</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== Work Experience ===== -->
+      <section class="resume-section">
+        <h2 class="resume-h"><span data-lang="ja">職歴（アルバイト）</span><span data-lang="en">Work Experience (Part-time)</span></h2>
+        <dl class="timeline">
+          <dt><span data-lang="ja">2025年4月〜現在</span><span data-lang="en">Apr 2025 – present</span></dt>
+          <dd>
+            <span data-lang="ja">ヤマト・スタッフ・サプライ株式会社（荷物の仕分け作業）</span>
+            <span data-lang="en">Yamato Staff Supply Co., Ltd. (parcel sorting)</span>
+          </dd>
+        </dl>
+      </section>
+
+      <!-- ===== Interests ===== -->
+      <section class="resume-section">
+        <h2 class="resume-h"><span data-lang="ja">趣味</span><span data-lang="en">Interests</span></h2>
+        <p>
+          <span data-lang="ja">ゲーム、アニメ鑑賞、AIを使った映像制作</span>
+          <span data-lang="en">Games, anime, AI video creation</span>
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year">2026</span> Ripon.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
