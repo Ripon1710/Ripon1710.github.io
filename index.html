@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Apply language before first paint. Priority: ?lang= > localStorage > Japanese -->
+  <script>
+    (function () {
+      document.documentElement.classList.add("js");
+      var lang = null;
+      try { lang = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+      if (lang !== "en" && lang !== "ja") {
+        try { lang = localStorage.getItem("ripon-lang"); } catch (e) {}
+      }
+      if (lang === "en") {
+        document.documentElement.classList.add("lang-en");
+        document.documentElement.lang = "en";
+      }
+    })();
+  </script>
+
+  <title>Ripon | IT Student × AI Creator</title>
+  <meta name="description" content="Ripon — IT student in Japan and AI creator. I build systems with code and tell stories with AI. 日本で学ぶIT学生・AIクリエイター。">
+  <meta name="theme-color" content="#0b0b0e">
+
+  <!-- Open Graph / share preview -->
+  <!-- [PLACEHOLDER] After deploying, change og:url and og:image / twitter:image to ABSOLUTE URLs
+       (e.g. https://USERNAME.github.io/REPO/images/og.jpg) — most platforms ignore relative paths. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ripon | IT Student × AI Creator">
+  <meta property="og:description" content="I build systems with code and tell stories with AI. コードでシステムを作り、AIで物語を語る。">
+  <meta property="og:image" content="images/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://example.com/"> <!-- [PLACEHOLDER] -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ripon | IT Student × AI Creator">
+  <meta name="twitter:description" content="I build systems with code and tell stories with AI.">
+  <meta name="twitter:image" content="images/og.jpg">
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#hero" class="logo" aria-label="Home">R<span>.</span></a>
+      <nav aria-label="Main">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about"><span data-lang="ja">自己紹介</span><span data-lang="en">About</span></a></li>
+          <li><a href="#projects"><span data-lang="ja">プロジェクト</span><span data-lang="en">Projects</span></a></li>
+          <!-- HIDDEN FOR LAUNCH: nav AI Work — to restore: delete this wrapper line and the END line, then replace every ~~ inside with --
+          <li><a href="#creative"><span data-lang="ja">AI作品</span><span data-lang="en">AI Work</span></a></li>
+          END HIDDEN: nav AI Work -->
+          <li><a href="#skills"><span data-lang="ja">スキル</span><span data-lang="en">Skills</span></a></li>
+          <li><a href="#contact"><span data-lang="ja">連絡先</span><span data-lang="en">Contact</span></a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English">
+          <span class="lang-opt active" data-lang-opt="ja">JP</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt" data-lang-opt="en">EN</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== 1. HERO ===== -->
+    <section id="hero" class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow"><span data-lang="ja">IT学生 × AIクリエイター</span><span data-lang="en">IT Student × AI Creator</span></p>
+          <h1 class="hero-name">
+            Ripon
+            <span class="hero-kana">リポン</span>
+          </h1>
+          <p class="hero-tagline">
+            <span data-lang="ja">コードでシステムを作り、AIで物語を語る。</span>
+            <span data-lang="en">I build systems with code and tell stories with AI.</span>
+          </p>
+          <p class="hero-intro">
+            <span data-lang="ja">日本で学ぶバングラデシュ出身のIT学生です。C言語・Web開発と、AIを活用した映像制作に取り組んでいます。</span>
+            <span data-lang="en">I'm an IT student from Bangladesh studying in Japan, working on C, web development, and AI-powered filmmaking.</span>
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary"><span data-lang="ja">プロジェクトを見る</span><span data-lang="en">View Projects</span></a>
+            <!-- HIDDEN FOR LAUNCH: hero CV buttons — to restore: delete this wrapper line and the END line, then replace every ~~ inside with --
+            <!~~ [PLACEHOLDER] CV files: files/cv-ja.pdf and files/cv-en.pdf ~~>
+            <a href="files/cv-ja.pdf" class="btn btn-ghost" data-lang="ja" download>履歴書 / CV をダウンロード</a>
+            <a href="files/cv-en.pdf" class="btn btn-ghost" data-lang="en" download>Download CV</a>
+            END HIDDEN: hero CV buttons -->
+          </div>
+        </div>
+        <div class="hero-avatar">
+          <div class="avatar-frame">
+            <img src="images/avatar.jpg" alt="" width="800" height="800">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 2. ABOUT ===== -->
+    <section id="about" class="section">
+      <div class="container narrow">
+        <p class="section-label">01</p>
+        <h2 class="section-title"><span data-lang="ja">自己紹介</span><span data-lang="en">About</span></h2>
+        <p class="about-text lead">
+          <span data-lang="ja">バングラデシュで生まれ、テクノロジーを学ぶために日本に来ました。現在は専門学校でITを学んでいます。</span>
+          <span data-lang="en">I was born in Bangladesh and came to Japan to study technology. I'm currently studying IT at a vocational college.</span>
+        </p>
+        <p class="about-text">
+          <span data-lang="ja">授業ではC言語やWeb開発を学び、個人ではAIツールを組み合わせた映像制作やワークフローの自動化に挑戦しています。</span>
+          <span data-lang="en">In class I learn C and web development; on my own I build AI video projects and automate creative workflows by connecting multiple AI tools.</span>
+        </p>
+        <p class="about-text">
+          <span data-lang="ja">目標は、技術と創造力で「実際に役立つもの」を作れるエンジニアになることです。</span>
+          <span data-lang="en">My goal is to become an engineer who uses technology and creativity to build things people actually use.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== 3. PROJECTS ===== -->
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <p class="section-label">02</p>
+        <h2 class="section-title"><span data-lang="ja">プロジェクト</span><span data-lang="en">Projects</span></h2>
+
+        <div class="project-grid">
+
+          <!-- Project 1: Club Hisab (featured) -->
+          <article class="project-card featured">
+            <div class="project-thumb thumb-shots">
+              <img class="shot shot-admin" src="images/club-hisab-admin.png" alt="Club Hisab admin panel (Bengali UI)" width="604" height="930" loading="lazy">
+              <img class="shot shot-member" src="images/club-hisab.png" alt="Club Hisab member home (Bengali UI)" width="1006" height="976" loading="lazy">
+            </div>
+            <p class="thumb-caption"><span data-lang="ja">UI: ベンガル語</span><span data-lang="en">UI: Bengali</span></p>
+            <div class="project-body">
+              <h3 class="project-title">Club Hisab</h3>
+              <p class="project-type"><span data-lang="ja">Webアプリ ・ 個人開発（実際のクライアント）</span><span data-lang="en">Web App · Solo Build for a Real Client</span></p>
+              <dl class="case">
+                <dt><span data-lang="ja">課題</span><span data-lang="en">Problem</span></dt>
+                <dd>
+                  <span data-lang="ja">バングラデシュの農村にある社会活動クラブ（会員30名以上）では、誰がいくら納め、資金が何に使われたかを会員が確認する手段がありませんでした。</span>
+                  <span data-lang="en">A social-work club of 30+ members in a Bangladeshi village had no way for members to see who paid what or where the money went.</span>
+                </dd>
+                <dt><span data-lang="ja">担当</span><span data-lang="en">My Role</span></dt>
+                <dd>
+                  <span data-lang="ja">外部の開発者として、企画・UI設計・フロントエンド・バックエンド・デプロイまで一人で担当。現在は管理者として運用も行っています。</span>
+                  <span data-lang="en">As an outside developer, I designed and built the entire app solo — planning, UI, front end, back end, and deployment — and now run it as admin.</span>
+                </dd>
+                <dt><span data-lang="ja">成果</span><span data-lang="en">Result</span></dt>
+                <dd>
+                  <span data-lang="ja">段階的に導入中で、現在10名以上の会員が利用しています。入金・支出・残高を全員がリアルタイムで確認できるようになりました。サーバーレス構成により、運用コストは0円です。</span>
+                  <span data-lang="en">Rolling out in stages, with 10+ members actively using it. Every member can now see contributions, spending, and balance in real time. Serverless architecture keeps running costs at zero.</span>
+                </dd>
+              </dl>
+              <div class="features">
+                <h4 class="features-title"><span data-lang="ja">主な機能</span><span data-lang="en">Key Features</span></h4>
+                <ul class="feature-list">
+                  <li><span data-lang="ja">会員用PINログインと管理者ログインを分離</span><span data-lang="en">Member PIN login with a separate admin login</span></li>
+                  <li><span data-lang="ja">Firestore Security Rulesでアクセス権限を制御（テスト102件）</span><span data-lang="en">Access control enforced with Firestore Security Rules (102 tests)</span></li>
+                  <li><span data-lang="ja">bKash・Nagadの入金を取引IDで申請し、管理者の承認後に反映（重複IDは自動ブロック）</span><span data-lang="en">bKash/Nagad payments submitted with a transaction ID and counted only after admin approval (duplicate IDs blocked)</span></li>
+                  <li><span data-lang="ja">カテゴリ別・イベント別の支出管理</span><span data-lang="en">Expense tracking by category and event</span></li>
+                  <li><span data-lang="ja">残高と納入状況が一目で分かるダッシュボード、公開アクティビティログ、お知らせ掲示板</span><span data-lang="en">Dashboard showing balance and who has or hasn't paid, plus a public activity log and notice board</span></li>
+                  <li><span data-lang="ja">PWA対応（ホーム画面に追加可能）、Cloudflare Workerによるプッシュ通知</span><span data-lang="en">Installable PWA with push notifications via a Cloudflare Worker</span></li>
+                </ul>
+              </div>
+              <ul class="tags">
+                <li>HTML</li><li>CSS</li><li>JavaScript</li><li>PWA</li><li>Firebase (Firestore / Auth / Hosting / FCM)</li><li>Cloudflare Workers</li><li>Serverless</li>
+              </ul>
+              <p class="project-note"><span data-lang="ja">ソースコードはご要望に応じて共有可能です。</span><span data-lang="en">Source code available on request.</span></p>
+              <!-- Repo is private — link stays "#" so it remains hidden -->
+              <a href="#" class="project-link"><span data-lang="ja">詳細を見る →</span><span data-lang="en">View details →</span></a>
+            </div>
+          </article>
+
+          <!-- HIDDEN FOR LAUNCH: Projects 2–3 (マイ貯金プラン, QUMCUM) — to restore: delete this wrapper line and the END line, then replace every ~~ inside with --
+          <!~~ Project 2: マイ貯金プラン ~~>
+          <article class="project-card">
+            <div class="project-thumb">
+              <!~~ [PLACEHOLDER] <img src="images/saving-plan.png" alt="マイ貯金プラン screenshot"> ~~>
+              <span class="placeholder-tag">[PLACEHOLDER] Screenshot</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title"><span data-lang="ja">マイ貯金プラン</span><span data-lang="en">My Savings Plan (マイ貯金プラン)</span></h3>
+              <p class="project-type"><span data-lang="ja">デスクトップアプリ ・ 学校チーム制作</span><span data-lang="en">Desktop App · School Team Project</span></p>
+              <dl class="case">
+                <dt><span data-lang="ja">課題</span><span data-lang="en">Problem</span></dt>
+                <dd>
+                  <span data-lang="ja">[PLACEHOLDER] 学生が貯金目標を立てても、進み具合が見えず続かない。</span>
+                  <span data-lang="en">[PLACEHOLDER] Students set savings goals but give up because they can't see their progress.</span>
+                </dd>
+                <dt><span data-lang="ja">担当</span><span data-lang="en">My Role</span></dt>
+                <dd>
+                  <span data-lang="ja">[PLACEHOLDER] チームの一員として、○○機能の実装を担当。</span>
+                  <span data-lang="en">[PLACEHOLDER] As a team member, I implemented the ___ feature.</span>
+                </dd>
+                <dt><span data-lang="ja">成果</span><span data-lang="en">Result</span></dt>
+                <dd>
+                  <span data-lang="ja">[PLACEHOLDER] 目標額と達成率を日本語UIで分かりやすく表示するアプリを完成。</span>
+                  <span data-lang="en">[PLACEHOLDER] Shipped an app that clearly shows goal amount and progress in a Japanese UI.</span>
+                </dd>
+              </dl>
+              <ul class="tags">
+                <li>C</li><li>DX Library</li><li><span data-lang="ja">チーム開発</span><span data-lang="en">Team Project</span></li>
+              </ul>
+              <!~~ [PLACEHOLDER] Replace "#" with real link — hidden until then ~~>
+              <a href="#" class="project-link"><span data-lang="ja">詳細を見る →</span><span data-lang="en">View details →</span></a>
+            </div>
+          </article>
+
+          <!~~ Project 3: QUMCUM ~~>
+          <article class="project-card">
+            <div class="project-thumb">
+              <!~~ [PLACEHOLDER] <img src="images/qumcum.png" alt="QUMCUM robot program"> ~~>
+              <span class="placeholder-tag">[PLACEHOLDER] Photo / Screenshot</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title"><span data-lang="ja">QUMCUM 信号プログラム</span><span data-lang="en">QUMCUM Traffic Signal Program</span></h3>
+              <p class="project-type"><span data-lang="ja">ロボット × 教育 ・ 授業制作</span><span data-lang="en">Robotics × Education · Class Project</span></p>
+              <dl class="case">
+                <dt><span data-lang="ja">課題</span><span data-lang="en">Problem</span></dt>
+                <dd>
+                  <span data-lang="ja">[PLACEHOLDER] 日本の交通ルール（信号）を楽しく学べる教材が欲しい。</span>
+                  <span data-lang="en">[PLACEHOLDER] Needed a fun way to learn Japanese traffic-signal rules.</span>
+                </dd>
+                <dt><span data-lang="ja">担当</span><span data-lang="en">My Role</span></dt>
+                <dd>
+                  <span data-lang="ja">[PLACEHOLDER] クイズの設計とScratchでのプログラム作成。</span>
+                  <span data-lang="en">[PLACEHOLDER] Designed the quiz and programmed it in Scratch.</span>
+                </dd>
+                <dt><span data-lang="ja">成果</span><span data-lang="en">Result</span></dt>
+                <dd>
+                  <span data-lang="ja">[PLACEHOLDER] ロボットが動きで正解・不正解を伝えるクイズ形式の教材を完成。</span>
+                  <span data-lang="en">[PLACEHOLDER] Built a quiz where the robot shows right/wrong answers through movement.</span>
+                </dd>
+              </dl>
+              <ul class="tags">
+                <li>Scratch</li><li>QUMCUM Pro</li><li><span data-lang="ja">ロボット</span><span data-lang="en">Robotics</span></li>
+              </ul>
+              <!~~ [PLACEHOLDER] Replace "#" with real link — hidden until then ~~>
+              <a href="#" class="project-link"><span data-lang="ja">詳細を見る →</span><span data-lang="en">View details →</span></a>
+            </div>
+          </article>
+          END HIDDEN: Projects 2–3 (マイ貯金プラン, QUMCUM) -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HIDDEN FOR LAUNCH: AI Creative Work section — to restore: delete this wrapper line and the END line, then replace every ~~ inside with --
+    <!~~ ===== 4. AI CREATIVE WORK ===== ~~>
+    <section id="creative" class="section">
+      <div class="container">
+        <p class="section-label">03</p>
+        <h2 class="section-title"><span data-lang="ja">AIクリエイティブ作品</span><span data-lang="en">AI Creative Work</span></h2>
+        <p class="section-lead">
+          <span data-lang="ja">Claude・Higgsfield・ElevenLabs・CapCutを組み合わせて制作したAI映像・ビジュアル作品です。</span>
+          <span data-lang="en">AI videos and visuals made by combining Claude, Higgsfield, ElevenLabs, and CapCut.</span>
+        </p>
+
+        <div class="gallery">
+          <!~~ [PLACEHOLDER] Replace each tile with <video> / <img> / YouTube thumbnail link ~~>
+          <figure class="gallery-item tall">
+            <div class="gallery-media"><span class="placeholder-tag">[PLACEHOLDER] AI Short Film</span></div>
+            <figcaption><span data-lang="ja">[PLACEHOLDER] 作品タイトル 1 — AIショートフィルム</span><span data-lang="en">[PLACEHOLDER] Title 1 — AI Short Film</span></figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <div class="gallery-media"><span class="placeholder-tag">[PLACEHOLDER] Character Art</span></div>
+            <figcaption><span data-lang="ja">[PLACEHOLDER] 作品タイトル 2 — キャラクターデザイン</span><span data-lang="en">[PLACEHOLDER] Title 2 — Character Design</span></figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <div class="gallery-media"><span class="placeholder-tag">[PLACEHOLDER] Cinematic Still</span></div>
+            <figcaption><span data-lang="ja">[PLACEHOLDER] 作品タイトル 3 — シネマティック画像</span><span data-lang="en">[PLACEHOLDER] Title 3 — Cinematic Still</span></figcaption>
+          </figure>
+          <figure class="gallery-item wide">
+            <div class="gallery-media"><span class="placeholder-tag">[PLACEHOLDER] AI Video Series</span></div>
+            <figcaption><span data-lang="ja">[PLACEHOLDER] 作品タイトル 4 — AI映像シリーズ</span><span data-lang="en">[PLACEHOLDER] Title 4 — AI Video Series</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    END HIDDEN: AI Creative Work section -->
+
+    <!-- ===== 5. SKILLS & CERTIFICATIONS ===== -->
+    <section id="skills" class="section section-alt">
+      <div class="container">
+        <p class="section-label">03</p>
+        <h2 class="section-title"><span data-lang="ja">スキル・資格</span><span data-lang="en">Skills &amp; Certifications</span></h2>
+
+        <div class="skills-grid">
+          <div class="skill-block">
+            <h3><span data-lang="ja">プログラミング</span><span data-lang="en">Programming</span></h3>
+            <ul class="skill-list">
+              <li>C</li><li>HTML / CSS</li><li>JavaScript</li><li>Scratch</li>
+            </ul>
+          </div>
+          <div class="skill-block">
+            <h3><span data-lang="ja">AIツール</span><span data-lang="en">AI Tools</span></h3>
+            <ul class="skill-list">
+              <li>Claude</li><li>Higgsfield AI</li><li>ElevenLabs</li><li>CapCut</li>
+            </ul>
+          </div>
+          <div class="skill-block">
+            <h3><span data-lang="ja">言語</span><span data-lang="en">Languages</span></h3>
+            <ul class="skill-list">
+              <li><span data-lang="ja">ベンガル語（母語）</span><span data-lang="en">Bengali (Native)</span></li>
+              <li><span data-lang="ja">日本語（JLPT N2）</span><span data-lang="en">Japanese (JLPT N2)</span></li>
+              <li><span data-lang="ja">英語（基礎）</span><span data-lang="en">English (Basic)</span></li>
+            </ul>
+          </div>
+          <div class="skill-block">
+            <h3><span data-lang="ja">資格</span><span data-lang="en">Certifications</span></h3>
+            <ul class="skill-list">
+              <li>
+                <span data-lang="ja">C言語プログラミング能力認定試験 3級 取得</span>
+                <span data-lang="en">C Programming Ability Certification, Level 3 (Passed)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. SERVICES (portfolio style, no pricing) ===== -->
+    <section id="services" class="section">
+      <div class="container">
+        <p class="section-label">04</p>
+        <h2 class="section-title"><span data-lang="ja">できること</span><span data-lang="en">What I Do</span></h2>
+        <div class="service-grid">
+          <div class="service-card">
+            <span class="service-icon" aria-hidden="true">▶</span>
+            <h3><span data-lang="ja">AI映像制作</span><span data-lang="en">AI Video Production</span></h3>
+            <p>
+              <span data-lang="ja">ショートフィルムやSNS向け縦型動画を、企画から編集までAIで制作します。</span>
+              <span data-lang="en">Short films and vertical social videos, from concept to final edit, made with AI.</span>
+            </p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon" aria-hidden="true">◆</span>
+            <h3><span data-lang="ja">AIビジュアル・キャラクター</span><span data-lang="en">AI Visuals &amp; Characters</span></h3>
+            <p>
+              <span data-lang="ja">一貫性のあるキャラクターや世界観のビジュアルをデザインします。</span>
+              <span data-lang="en">Consistent characters and world-building visuals.</span>
+            </p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon" aria-hidden="true">⚙</span>
+            <h3><span data-lang="ja">ワークフロー設計</span><span data-lang="en">Workflow Design</span></h3>
+            <p>
+              <span data-lang="ja">複数のAIツールを組み合わせ、制作を効率化する仕組みを作ります。</span>
+              <span data-lang="en">Systems that connect multiple AI tools to make production faster.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 7. CONTACT ===== -->
+    <section id="contact" class="section section-alt contact">
+      <div class="container narrow center">
+        <p class="section-label">05</p>
+        <h2 class="section-title"><span data-lang="ja">お問い合わせ</span><span data-lang="en">Contact</span></h2>
+        <p class="section-lead">
+          <span data-lang="ja">インターンシップ・就職のご相談、作品についてのご連絡はお気軽にどうぞ。</span>
+          <span data-lang="en">Open to internship and job opportunities. Feel free to reach out about my work, too.</span>
+        </p>
+        <div class="contact-actions">
+          <a href="mailto:ahammedripon48@gmail.com" class="btn btn-primary btn-lg">ahammedripon48@gmail.com</a>
+          <!-- HIDDEN FOR LAUNCH: contact CV buttons — to restore: delete this wrapper line and the END line, then replace every ~~ inside with --
+          <!~~ [PLACEHOLDER] CV files: files/cv-ja.pdf and files/cv-en.pdf ~~>
+          <a href="files/cv-ja.pdf" class="btn btn-ghost btn-lg" data-lang="ja" download>履歴書 / CV をダウンロード</a>
+          <a href="files/cv-en.pdf" class="btn btn-ghost btn-lg" data-lang="en" download>Download CV</a>
+          END HIDDEN: contact CV buttons -->
+        </div>
+        <ul class="social-links">
+          <li><a href="https://github.com/Ripon1710" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>   <!-- [PLACEHOLDER] URL -->
+          <li><a href="#" target="_blank" rel="noopener">TikTok</a></li>    <!-- [PLACEHOLDER] URL -->
+          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li> <!-- [PLACEHOLDER] URL -->
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year">2026</span> Ripon.
+        <span data-lang="ja">コードと物語で、価値をつくる。</span><span data-lang="en">Creating value with code and stories.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
